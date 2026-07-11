@@ -1,0 +1,7 @@
+@media print {
+  .main-content { margin-left: 0 !important; }
+  aside, header { display: none !important; }
+  .page-container { padding: 0 !important; }
+  .glass-card { box-shadow: none !important; border: 1px solid #dcfce7 !important; }
+  button:not([data-print]) { display: none !important; }
+}
