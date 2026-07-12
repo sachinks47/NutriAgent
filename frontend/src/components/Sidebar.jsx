@@ -6,8 +6,8 @@ import {
 } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { path: '/dashboard',       icon: LayoutDashboard, label: 'Dashboard'     },
   { path: '/profile',         icon: User,            label: 'My Profile'    },
+  { path: '/dashboard',       icon: LayoutDashboard, label: 'Dashboard'     },
   { path: '/food-search',     icon: Search,          label: 'Food Search'   },
   { path: '/meal-log',        icon: UtensilsCrossed, label: 'Meal Log'      },
   { path: '/diet-plan',       icon: CalendarDays,    label: 'Diet Plan'     },
@@ -85,10 +85,10 @@ const styles = {
     left: 0,
     top: 0,
     height: '100vh',
-    background: 'rgba(255,255,255,0.88)',
+    background: 'var(--glass-bg-heavy)',
     backdropFilter: 'blur(24px)',
     WebkitBackdropFilter: 'blur(24px)',
-    borderRight: '1px solid rgba(34,197,94,0.18)',
+    borderRight: '1px solid var(--border-solid)',
     boxShadow: '4px 0 24px rgba(34,197,94,0.07)',
     display: 'flex',
     flexDirection: 'column',
@@ -121,13 +121,13 @@ const styles = {
   logoName: {
     fontSize: '1.05rem',
     fontWeight: 800,
-    color: '#0f2d1a',
+    color: 'var(--text-primary)',
     fontFamily: "'Nunito', sans-serif",
     whiteSpace: 'nowrap',
   },
   logoTagline: {
     fontSize: '0.68rem',
-    color: '#6b8f76',
+    color: 'var(--text-muted)',
     fontWeight: 500,
     marginTop: -2,
     whiteSpace: 'nowrap',
@@ -152,7 +152,7 @@ const styles = {
     padding: '10px 12px',
     borderRadius: 12,
     textDecoration: 'none',
-    color: '#6b8f76',
+    color: 'var(--text-muted)',
     fontWeight: 500,
     fontSize: '0.88rem',
     transition: 'all 0.2s ease',
@@ -160,8 +160,8 @@ const styles = {
     minHeight: 42,
   },
   navItemActive: {
-    background: 'rgba(34,197,94,0.1)',
-    color: '#15803d',
+    background: 'rgba(34,197,94,0.15)',
+    color: 'var(--primary)',
   },
   navIcon: {
     display: 'flex',
@@ -174,7 +174,7 @@ const styles = {
     transition: 'color 0.2s',
   },
   navIconActive: {
-    color: '#16a34a',
+    color: 'var(--primary)',
   },
   navLabel: {
     whiteSpace: 'nowrap',
@@ -183,7 +183,7 @@ const styles = {
     fontFamily: "'Inter', sans-serif",
   },
   navLabelActive: {
-    color: '#15803d',
+    color: 'var(--primary)',
     fontWeight: 600,
   },
   activeBar: {
@@ -222,14 +222,14 @@ const styles = {
   collapseBtn: {
     margin: '8px',
     padding: '8px',
-    border: '1px solid rgba(34,197,94,0.2)',
+    border: '1px solid var(--border-solid)',
     borderRadius: 10,
-    background: 'rgba(255,255,255,0.6)',
+    background: 'var(--glass-bg)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#6b8f76',
+    color: 'var(--text-muted)',
     transition: 'all 0.2s',
   },
 }

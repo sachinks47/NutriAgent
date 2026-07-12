@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, ShoppingBag, CornerUpLeft, Menu, X, Activity, Leaf, Droplets, Sun, ArrowUpRight } from 'lucide-react'
-import GlassButton from '../components/GlassButton.jsx'
+import { ArrowUpRight } from 'lucide-react'
+import { profileAPI } from '../api/client.js'
 
-const PANELS = [
-  { icon: Activity, bg: '#000', title: 'Experience our newly enhanced natural AI formula' },
-  { icon: Leaf, bg: '#166534', title: 'Pure organic ingredients tracked sustainably' },
-  { icon: Droplets, bg: '#155e75', title: 'Advanced tracking for maximum wellness' },
-  { icon: Sun, bg: '#b45309', title: 'Clinically tested for daily energy & vitality' }
-]
+
 
 export default function Landing() {
   const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [activePanel, setActivePanel] = useState(0)
+  const [username, setUsername] = useState('')
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActivePanel(p => (p + 1) % PANELS.length)
-    }, 3500)
-    return () => clearInterval(timer)
+    profileAPI.get()
+      .then(res => setUsername(res.data?.name || ''))
+      .catch(() => {}) // Ignore errors if profile doesn't exist
   }, [])
 
   return (
@@ -39,41 +32,19 @@ export default function Landing() {
           <a href="#" style={s.navLink}>Contact</a>
         </div>
         <div style={s.navRight} className="animate-slide-right delay-300">
-          <Search size={20} strokeWidth={1.5} color="#fff" style={{ cursor: 'pointer' }} />
-          <ShoppingBag size={20} strokeWidth={1.5} color="#fff" style={{ cursor: 'pointer' }} />
-          <div style={s.avatar} />
-          <button style={s.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X color="#fff" /> : <Menu color="#fff" />}
-          </button>
+          {/* Removed top buttons as requested */}
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      {menuOpen && (
-        <div style={s.mobileMenu}>
-          <a href="#" style={s.mobileLink}>About</a>
-          <a href="#" style={s.mobileLink}>Features</a>
-          <a href="#" style={s.mobileLink}>Pricing</a>
-          <a href="#" style={s.mobileLink}>Contact</a>
-        </div>
-      )}
-
       {/* Hero Section */}
       <section style={s.hero}>
         <h1 style={s.headline}>
           <div style={s.line1}>
-            <span className="animate-slide-up delay-200" style={s.word}>The</span>
-            <span className="animate-slide-up delay-300" style={s.word}>Power</span>
-            <span className="animate-slide-up delay-400" style={{ ...s.word, color: 'rgba(255,255,255,0.45)' }}>of</span>
-          </div>
-          <div style={s.line2}>
-            <span className="animate-slide-up delay-500" style={{ ...s.word, color: 'rgba(255,255,255,0.45)' }}>AI</span>
-            <span className="animate-slide-up delay-600" style={{ ...s.word, color: 'rgba(255,255,255,0.45)' }}>in</span>
-            <span className="animate-slide-up delay-700" style={s.word}>Every</span>
-          </div>
-          <div style={s.line3}>
-            <span className="animate-slide-up delay-800" style={s.word}>Meal</span>
-            <img src="/inline_capsule.png" alt="Capsule" style={s.inlineImg} className="animate-scale-in delay-1000" />
+            <span className="animate-slide-up delay-200" style={s.word}>Welcome</span>
+            <span className="animate-slide-up delay-300" style={{ ...s.word, color: 'rgba(255,255,255,0.45)' }}>
+              {username ? username : 'User'}
+            </span>
           </div>
         </h1>
 
@@ -87,55 +58,6 @@ export default function Landing() {
           </p>
         </div>
       </section>
-
-      {/* Mobile Product Image */}
-      <img src="/product_mockup.png" alt="App Mockup" style={s.mobileProduct} className="animate-scale-in delay-800" />
-
-      {/* Desktop Floating Product Image */}
-      <img src="/product_mockup.png" alt="App Mockup" style={s.desktopProduct} className="animate-scale-in delay-700" />
-
-      {/* Bottom Panels */}
-      <div style={s.footerGrid}>
-        {/* Panel 1 */}
-        <div style={s.panel1} className="animate-slide-up delay-400">
-          <h2 style={s.panel1Text}>Start your personalized path to natural balance</h2>
-          <a href="#" style={s.panel1Link} onClick={(e) => { e.preventDefault(); navigate('/profile'); }}>Personal Assessment</a>
-        </div>
-
-        {/* Panel 2 */}
-        <div style={s.panel2} className="animate-slide-up delay-500">
-          <div style={s.carouselWrapper}>
-            {PANELS.map((p, i) => {
-              const Icon = p.icon
-              const active = i === activePanel
-              return (
-                <div key={i} style={{ ...s.carouselSlide, opacity: active ? 1 : 0, transform: active ? 'translateY(0)' : 'translateY(16px)' }}>
-                  <div style={{ ...s.carouselIconBox, background: p.bg }}>
-                    <Icon color="#fff" size={24} />
-                  </div>
-                  <p style={s.carouselText}>{p.title}</p>
-                </div>
-              )
-            })}
-          </div>
-          <div style={s.dots}>
-            {PANELS.map((_, i) => (
-              <div key={i} style={{ ...s.dot, background: i === activePanel ? '#000' : 'rgba(0,0,0,0.2)' }} />
-            ))}
-          </div>
-        </div>
-
-        {/* Panel 3 */}
-        <div style={s.panel3} className="animate-slide-up delay-600">
-          <div style={s.panel3Left}>
-            <Activity color="#22c55e" size={48} />
-          </div>
-          <div style={s.panel3Right}>
-            <div style={s.panel3Stat}>+14K</div>
-            <div style={s.panel3Desc}>People have already optimized their wellness</div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
@@ -143,7 +65,9 @@ export default function Landing() {
 const s = {
   container: {
     minHeight: '100vh',
+    width: '100vw',
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     position: 'relative',
     overflowX: 'hidden',
