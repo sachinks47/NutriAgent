@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { path: '/',                icon: LayoutDashboard, label: 'Dashboard'     },
+  { path: '/dashboard',       icon: LayoutDashboard, label: 'Dashboard'     },
   { path: '/profile',         icon: User,            label: 'My Profile'    },
   { path: '/food-search',     icon: Search,          label: 'Food Search'   },
   { path: '/meal-log',        icon: UtensilsCrossed, label: 'Meal Log'      },

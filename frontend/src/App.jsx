@@ -11,32 +11,40 @@ import FoodSearch     from './pages/FoodSearch.jsx'
 import MealLog        from './pages/MealLog.jsx'
 import DietPlan       from './pages/DietPlan.jsx'
 import HealthAdvisory from './pages/HealthAdvisory.jsx'
+import Landing        from './pages/Landing.jsx'
 
 export default function App() {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
     <BrowserRouter>
-      <div className="app-layout">
-        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        
+        {/* App Layout for all other routes */}
+        <Route path="/*" element={
+          <div className="app-layout">
+            <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} />
 
-        <div
-          className="main-content"
-          style={{ marginLeft: collapsed ? 64 : 240, transition: 'margin-left 0.35s cubic-bezier(0.4,0,0.2,1)' }}
-        >
-          <Header />
-          <main style={{ flex: 1, overflowY: 'auto' }}>
-            <Routes>
-              <Route path="/"                element={<Dashboard />}      />
-              <Route path="/profile"         element={<Profile />}        />
-              <Route path="/food-search"     element={<FoodSearch />}     />
-              <Route path="/meal-log"        element={<MealLog />}        />
-              <Route path="/diet-plan"       element={<DietPlan />}       />
-              <Route path="/health-advisory" element={<HealthAdvisory />} />
-            </Routes>
-          </main>
-        </div>
-      </div>
+            <div
+              className="main-content"
+              style={{ marginLeft: collapsed ? 64 : 240, transition: 'margin-left 0.35s cubic-bezier(0.4,0,0.2,1)' }}
+            >
+              <Header />
+              <main style={{ flex: 1, overflowY: 'auto' }}>
+                <Routes>
+                  <Route path="/dashboard"       element={<Dashboard />}      />
+                  <Route path="/profile"         element={<Profile />}        />
+                  <Route path="/food-search"     element={<FoodSearch />}     />
+                  <Route path="/meal-log"        element={<MealLog />}        />
+                  <Route path="/diet-plan"       element={<DietPlan />}       />
+                  <Route path="/health-advisory" element={<HealthAdvisory />} />
+                </Routes>
+              </main>
+            </div>
+          </div>
+        } />
+      </Routes>
 
       <Toaster
         position="top-right"
