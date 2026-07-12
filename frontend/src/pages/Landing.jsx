@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, Play, ArrowRight, Activity, Droplet, Flame } from 'lucide-react';
+import { Sparkles, ArrowRight, User, Brain, ClipboardList, TrendingUp } from 'lucide-react';
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
     <div style={s.container}>
-      {/* Background with floating elements - simulating the screenshot */}
+      {/* Hero Section Background */}
       <div style={s.bgWrapper}>
         <div style={s.bgOverlay} />
       </div>
@@ -26,15 +26,12 @@ export default function Landing() {
           <a href="#" style={s.navLink}>Blog</a>
         </div>
         <div style={s.navRight}>
-          <button style={s.loginBtn}>Log in</button>
           <button style={s.navCta} onClick={() => navigate('/profile')}>Get Started</button>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section style={s.hero}>
-        
-        {/* Left Content */}
         <div style={s.heroLeft} className="animate-slide-in-left">
           <div style={s.badge}>
             <Sparkles size={14} color="#4ade80" />
@@ -54,118 +51,124 @@ export default function Landing() {
             <button style={s.primaryBtn} onClick={() => navigate('/profile')}>
               Get Started <ArrowRight size={18} />
             </button>
-            <button style={s.secondaryBtn}>
-              <Play size={18} fill="currentColor" /> Watch Demo
-            </button>
-          </div>
-          
-          <div style={s.trustBadge}>
-            <div style={s.avatars}>
-              {/* Dummy avatars */}
-              <div style={{...s.avatarImg, backgroundImage: 'url(https://i.pravatar.cc/100?img=11)', zIndex: 4}} />
-              <div style={{...s.avatarImg, backgroundImage: 'url(https://i.pravatar.cc/100?img=12)', zIndex: 3, marginLeft: -12}} />
-              <div style={{...s.avatarImg, backgroundImage: 'url(https://i.pravatar.cc/100?img=13)', zIndex: 2, marginLeft: -12}} />
-              <div style={{...s.avatarImg, backgroundImage: 'url(https://i.pravatar.cc/100?img=14)', zIndex: 1, marginLeft: -12}} />
-            </div>
-            <div>
-              <div style={s.stars}>⭐⭐⭐⭐⭐</div>
-              <div style={s.trustText}>Trusted by 10,000+ users</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Content - Dashboard Mockup */}
-        <div style={s.heroRight} className="animate-slide-in-right delay-200">
-          <div style={s.mockup}>
-            
-            {/* Mockup Header */}
-            <div style={s.mockupHeader}>
-              <div style={s.mockupProfile}>
-                <div style={{...s.mockupAvatar, backgroundImage: 'url(https://i.pravatar.cc/150?img=68)'}} />
-                <div>
-                  <div style={s.mockupGreeting}>Hello, Sachin 👋</div>
-                  <div style={s.mockupSubGreeting}>Let's make today healthy!</div>
-                </div>
-              </div>
-              
-              <div style={s.mockupScoreBadge}>
-                <div>
-                  <div style={s.mockupScoreLabel}><Sparkles size={10} style={{marginRight: 4}}/> AI Score</div>
-                  <div style={s.mockupScoreValue}>92%</div>
-                </div>
-                <div style={s.mockupScoreRing}></div>
-              </div>
-            </div>
-
-            {/* Mockup Grid */}
-            <h3 style={s.mockupSectionTitle}>Today's Overview</h3>
-            <div style={s.mockupGrid}>
-              
-              {/* Left Column (Bars) */}
-              <div style={s.mockupCol}>
-                <div style={s.mockupCard}>
-                  <div style={s.cardHeader}>
-                    <Flame size={14} color="#eab308" /> <span>Calories</span>
-                  </div>
-                  <div style={s.cardValue}>1820 <span style={s.cardSubValue}>/ 2200 kcal</span></div>
-                  <div style={s.progressBarTrack}><div style={{...s.progressBarFill, width: '82%', background: '#4ade80'}} /></div>
-                </div>
-
-                <div style={s.mockupCard}>
-                  <div style={s.cardHeader}>
-                    <Activity size={14} color="#a3e635" /> <span>Protein</span>
-                  </div>
-                  <div style={s.cardValue}>110 <span style={s.cardSubValue}>/ 150 g</span></div>
-                  <div style={s.progressBarTrack}><div style={{...s.progressBarFill, width: '73%', background: '#4ade80'}} /></div>
-                </div>
-
-                <div style={s.mockupCard}>
-                  <div style={s.cardHeader}>
-                    <Droplet size={14} color="#38bdf8" /> <span>Water</span>
-                  </div>
-                  <div style={s.cardValue}>2.8 <span style={s.cardSubValue}>/ 3.5 L</span></div>
-                  <div style={s.progressBarTrack}><div style={{...s.progressBarFill, width: '80%', background: '#38bdf8'}} /></div>
-                </div>
-              </div>
-
-              {/* Right Column (Donut & Chat) */}
-              <div style={s.mockupCol}>
-                <div style={{...s.mockupCard, flex: 1}}>
-                  <div style={s.cardHeader}>Macros Balance</div>
-                  <div style={s.donutContainer}>
-                    <div style={s.donutChart}>
-                      <div style={s.donutCenter}>
-                        <div style={s.donutValue}>1820</div>
-                        <div style={s.donutLabel}>kcal</div>
-                      </div>
-                    </div>
-                    <div style={s.donutLegend}>
-                      <div style={s.legendItem}><span style={{...s.legendDot, background: '#a855f7'}}></span> Carbs <br/><span style={s.legendSub}>45% (205g)</span></div>
-                      <div style={s.legendItem}><span style={{...s.legendDot, background: '#4ade80'}}></span> Protein <br/><span style={s.legendSub}>30% (110g)</span></div>
-                      <div style={s.legendItem}><span style={{...s.legendDot, background: '#eab308'}}></span> Fats <br/><span style={s.legendSub}>25% (60g)</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{...s.mockupCard, background: 'rgba(255,255,255,0.03)', padding: '16px'}}>
-                  <div style={s.cardHeader}><Sparkles size={12} color="#60a5fa" style={{marginRight: 6}} /> AI Nutrition Coach</div>
-                  <div style={s.chatBubbleUser}>What should I eat after gym?</div>
-                  <div style={s.chatBubbleAiWrapper}>
-                    <div style={s.aiAvatar}>🤖</div>
-                    <div style={s.chatBubbleAi}>Great question! Try a high protein meal with complex carbs. Here are some perfect options for you.</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Floating Footer Pill */}
-      <div style={s.floatingFooter}>
-        <Sparkles size={16} color="#4ade80" /> Personalized. Intelligent. Always with you.
-      </div>
+      {/* How It Works Section */}
+      <section style={s.howItWorks}>
+        <div style={s.hiwHeader}>
+          <h2 style={s.hiwTitle}>How NutriAgent Works 🌿</h2>
+          <p style={s.hiwSubtitle}>Your journey to better health in 4 simple steps</p>
+        </div>
+
+        <div style={s.stepsContainer}>
+          {/* Step 1 */}
+          <div style={s.stepCard}>
+            <div style={s.stepNumber}>1</div>
+            <div style={s.stepIconBox}><User size={28} color="#4ade80" /></div>
+            <h4 style={s.stepTitle}>Create Your Profile</h4>
+            <p style={s.stepDesc}>Tell us about yourself, your goals and preferences.</p>
+          </div>
+          
+          <div style={s.stepConnector} />
+
+          {/* Step 2 */}
+          <div style={s.stepCard}>
+            <div style={s.stepNumber}>2</div>
+            <div style={s.stepIconBox}><Brain size={28} color="#4ade80" /></div>
+            <h4 style={s.stepTitle}>AI Analyzes</h4>
+            <p style={s.stepDesc}>Our AI analyzes your data and creates a personalized plan.</p>
+          </div>
+
+          <div style={s.stepConnector} />
+
+          {/* Step 3 */}
+          <div style={s.stepCard}>
+            <div style={s.stepNumber}>3</div>
+            <div style={s.stepIconBox}><ClipboardList size={28} color="#4ade80" /></div>
+            <h4 style={s.stepTitle}>Get Your Plan</h4>
+            <p style={s.stepDesc}>Receive customized meal plans, recipes and nutrition tips.</p>
+          </div>
+
+          <div style={s.stepConnector} />
+
+          {/* Step 4 */}
+          <div style={s.stepCard}>
+            <div style={s.stepNumber}>4</div>
+            <div style={s.stepIconBox}><TrendingUp size={28} color="#4ade80" /></div>
+            <h4 style={s.stepTitle}>Track & Improve</h4>
+            <p style={s.stepDesc}>Track your progress and improve your health every day.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Showcase Section */}
+      <section style={s.showcaseSection}>
+        <div style={s.showcaseContainer}>
+          <div style={s.showcaseLeft}>
+            <div style={s.showcaseBadge}>
+              <Sparkles size={12} color="#4ade80" /> SMART DASHBOARD
+            </div>
+            <h2 style={s.showcaseTitle}>
+              Everything You Need,<br/>All in One Place
+            </h2>
+            <p style={s.showcaseDesc}>
+              Track, analyze and improve your nutrition with our powerful and beautiful dashboard.
+            </p>
+            <button style={s.showcaseBtn} onClick={() => navigate('/profile')}>
+              Explore Dashboard <ArrowRight size={16} />
+            </button>
+          </div>
+          <div style={s.showcaseRight}>
+            <div style={s.showcaseMockup}>
+              <div style={s.mockSidebar}>
+                <div style={s.mockLogo}>🥑 NutriAgent</div>
+                <div style={s.mockNavItemActive}>🏠 Overview</div>
+                <div style={s.mockNavItem}>🍴 Meals</div>
+                <div style={s.mockNavItem}>📊 Analytics</div>
+                <div style={s.mockNavItem}>📈 Progress</div>
+                <div style={s.mockNavItem}>🍳 Recipes</div>
+              </div>
+              <div style={s.mockMain}>
+                <div style={s.mockHeader}>Dashboard Overview</div>
+                <div style={s.mockCards}>
+                  <div style={s.mockCard}>
+                    <div style={s.mockCardTitle}>Calories</div>
+                    <div style={s.mockCardValue}>1820 <span style={s.mockCardSub}>kcal</span></div>
+                    <div style={s.mockChartPlaceholder} />
+                  </div>
+                  <div style={s.mockCard}>
+                    <div style={s.mockCardTitle}>Protein</div>
+                    <div style={s.mockCardValue}>110 <span style={s.mockCardSub}>g</span></div>
+                    <div style={{...s.mockChartPlaceholder, opacity: 0.6}} />
+                  </div>
+                  <div style={s.mockCard}>
+                    <div style={s.mockCardTitle}>Water</div>
+                    <div style={s.mockCardValue}>2.8 <span style={s.mockCardSub}>L</span></div>
+                    <div style={{...s.mockChartPlaceholder, background: 'linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%)'}} />
+                  </div>
+                </div>
+                <div style={s.mockBottomArea}>
+                  <div style={{...s.mockCard, flex: 2}}>
+                    <div style={s.mockCardTitle}>Nutrition Trend</div>
+                    <div style={{height: '100px', borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'linear-gradient(180deg, rgba(74,222,128,0.15) 0%, transparent 100%)', position: 'relative', marginTop: 10}}>
+                      <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 100"><path d="M0,80 Q25,20 50,60 T100,40" fill="none" stroke="#4ade80" strokeWidth="2"/></svg>
+                    </div>
+                  </div>
+                  <div style={{...s.mockCard, flex: 1}}>
+                    <div style={s.mockCardTitle}>Today</div>
+                    <div style={s.mockRing}>
+                      <div style={s.mockRingValue}>82%</div>
+                      <div style={s.mockRingSub}>Goal Completed</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   )
@@ -184,11 +187,14 @@ const s = {
     color: '#fff',
   },
   bgWrapper: {
-    position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden',
+    position: 'fixed', inset: 0, zIndex: 0, overflow: 'hidden',
+    backgroundImage: 'url(/hero_bg.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   bgOverlay: {
     position: 'absolute', inset: 0, 
-    background: 'radial-gradient(circle at 70% 30%, rgba(34,197,94,0.15) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(34,197,94,0.05) 0%, transparent 50%)',
+    background: 'linear-gradient(90deg, #021207 0%, rgba(2, 18, 7, 0.8) 40%, rgba(2, 18, 7, 0.2) 100%)',
   },
   nav: {
     position: 'relative', zIndex: 10,
@@ -204,16 +210,13 @@ const s = {
     background: 'rgba(255,255,255,0.1)', padding: 6, borderRadius: 8, fontSize: '1.2rem',
   },
   navLinks: {
-    display: 'none', gap: '32px',
+    display: 'flex', gap: '32px',
   },
   navLink: {
     color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500,
     transition: 'color 0.2s',
   },
   navRight: { display: 'flex', alignItems: 'center', gap: '24px' },
-  loginBtn: {
-    background: 'none', border: 'none', color: '#fff', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer',
-  },
   navCta: {
     background: '#4ade80', color: '#000', border: 'none', padding: '10px 20px', borderRadius: '8px',
     fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer', transition: 'background 0.2s',
@@ -221,7 +224,8 @@ const s = {
   hero: {
     position: 'relative', zIndex: 10,
     display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between',
-    padding: '40px 48px 80px', maxWidth: '1400px', margin: '0 auto', width: '100%', gap: '60px',
+    padding: '60px 48px 120px', maxWidth: '1400px', margin: '0 auto', width: '100%', gap: '60px',
+    minHeight: '80vh',
   },
   heroLeft: {
     flex: '1 1 500px', maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '24px',
@@ -250,82 +254,113 @@ const s = {
     fontWeight: 700, fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '10px',
     cursor: 'pointer', transition: 'transform 0.2s',
   },
-  secondaryBtn: {
-    background: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
-    padding: '16px 32px', borderRadius: '12px', fontWeight: 600, fontSize: '1.05rem',
-    display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', transition: 'background 0.2s',
-  },
-  trustBadge: {
-    display: 'flex', alignItems: 'center', gap: '16px', marginTop: '24px',
-  },
-  avatars: { display: 'flex' },
-  avatarImg: {
-    width: 36, height: 36, borderRadius: '50%', backgroundSize: 'cover', border: '2px solid #03170a',
-  },
-  stars: { fontSize: '0.9rem', letterSpacing: '2px', marginBottom: '4px' },
-  trustText: { fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' },
   
-  heroRight: {
-    flex: '1 1 500px', maxWidth: '700px', position: 'relative',
+  // How It Works
+  howItWorks: {
+    position: 'relative', zIndex: 10,
+    background: 'linear-gradient(180deg, transparent 0%, #031408 100%)',
+    padding: '80px 48px',
+    display: 'flex', flexDirection: 'column', alignItems: 'center',
+    backdropFilter: 'blur(10px)',
   },
-  mockup: {
-    background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-    border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '24px',
-    boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+  hiwHeader: {
+    textAlign: 'center', marginBottom: '60px',
   },
-  mockupHeader: {
-    display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px',
+  hiwTitle: {
+    fontSize: '2.5rem', fontWeight: 800, fontFamily: "'Nunito', sans-serif", marginBottom: '12px', color: '#fff',
   },
-  mockupProfile: { display: 'flex', alignItems: 'center', gap: '12px' },
-  mockupAvatar: { width: 44, height: 44, borderRadius: '50%', backgroundSize: 'cover' },
-  mockupGreeting: { fontSize: '1.05rem', fontWeight: 600, color: '#fff' },
-  mockupSubGreeting: { fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' },
-  mockupScoreBadge: {
-    display: 'flex', alignItems: 'center', gap: '16px', background: 'rgba(255,255,255,0.05)',
-    padding: '8px 16px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)',
+  hiwSubtitle: {
+    fontSize: '1rem', color: 'rgba(255,255,255,0.6)',
   },
-  mockupScoreLabel: { fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', fontWeight: 600 },
-  mockupScoreValue: { fontSize: '1.2rem', fontWeight: 700, color: '#fff', lineHeight: 1 },
-  mockupScoreRing: {
-    width: 36, height: 36, borderRadius: '50%', border: '3px solid rgba(74,222,128,0.2)', borderTopColor: '#4ade80',
+  stepsContainer: {
+    display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+    gap: '20px', maxWidth: '1200px', width: '100%',
+    flexWrap: 'nowrap',
   },
-  mockupSectionTitle: { fontSize: '1.1rem', fontWeight: 600, marginBottom: '16px', color: '#fff' },
-  mockupGrid: {
-    display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '16px',
+  stepCard: {
+    flex: '1',
+    display: 'flex', flexDirection: 'column', alignItems: 'center',
+    textAlign: 'center', position: 'relative',
+    background: 'rgba(255,255,255,0.03)', padding: '30px 20px', borderRadius: '24px',
+    border: '1px solid rgba(255,255,255,0.08)',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+    backdropFilter: 'blur(20px)',
   },
-  mockupCol: { display: 'flex', flexDirection: 'column', gap: '16px' },
-  mockupCard: {
-    background: 'rgba(0,0,0,0.3)', borderRadius: '16px', padding: '16px', border: '1px solid rgba(255,255,255,0.05)',
+  stepNumber: {
+    position: 'absolute', top: '-16px',
+    width: '32px', height: '32px', borderRadius: '50%', background: '#122619', color: '#4ade80',
+    border: '2px solid #4ade80',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    fontWeight: 800, fontSize: '1rem', boxShadow: '0 0 20px rgba(74,222,128,0.3)',
   },
-  cardHeader: { fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' },
-  cardValue: { fontSize: '1.4rem', fontWeight: 700, color: '#fff', marginBottom: '12px', display: 'flex', alignItems: 'baseline', gap: '4px' },
-  cardSubValue: { fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', fontWeight: 500 },
-  progressBarTrack: { height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden' },
-  progressBarFill: { height: '100%', borderRadius: '4px' },
-  
-  donutContainer: { display: 'flex', alignItems: 'center', gap: '16px', marginTop: '8px' },
-  donutChart: {
-    width: 90, height: 90, borderRadius: '50%',
-    background: 'conic-gradient(#a855f7 0% 45%, #4ade80 45% 75%, #eab308 75% 100%)',
-    position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',
+  stepIconBox: {
+    width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(74,222,128,0.1)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px',
   },
-  donutCenter: { width: 70, height: 70, background: '#121e17', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
-  donutValue: { fontSize: '1.1rem', fontWeight: 700, lineHeight: 1 },
-  donutLabel: { fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' },
-  donutLegend: { display: 'flex', flexDirection: 'column', gap: '8px' },
-  legendItem: { fontSize: '0.75rem', color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'flex-start', gap: '6px', lineHeight: 1.3 },
-  legendDot: { width: 6, height: 6, borderRadius: '50%', marginTop: 2, display: 'inline-block' },
-  legendSub: { fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)', marginLeft: 12 },
-  
-  chatBubbleUser: { background: 'rgba(255,255,255,0.1)', padding: '10px 14px', borderRadius: '12px 12px 0 12px', fontSize: '0.8rem', color: '#fff', marginLeft: 'auto', width: 'fit-content', marginBottom: '12px' },
-  chatBubbleAiWrapper: { display: 'flex', gap: '10px', alignItems: 'flex-start' },
-  aiAvatar: { width: 28, height: 28, background: '#15803d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 },
-  chatBubbleAi: { background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)', padding: '10px 14px', borderRadius: '12px 12px 12px 0', fontSize: '0.8rem', color: '#fff', lineHeight: 1.5 },
-  
-  floatingFooter: {
-    position: 'absolute', bottom: '30px', left: '50%', transform: 'translateX(-50%)',
-    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-    backdropFilter: 'blur(10px)', padding: '10px 24px', borderRadius: '100px',
-    display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#fff', zIndex: 10,
-  }
+  stepTitle: {
+    fontSize: '1.1rem', fontWeight: 700, marginBottom: '10px', color: '#fff',
+  },
+  stepDesc: {
+    fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5,
+  },
+  stepConnector: {
+    flex: '0 0 30px', height: '2px', background: 'linear-gradient(90deg, transparent, rgba(74,222,128,0.4), transparent)',
+    marginTop: '60px',
+  },
+
+  // Showcase Section
+  showcaseSection: {
+    position: 'relative', zIndex: 10,
+    background: '#031408', padding: '80px 48px 120px',
+  },
+  showcaseContainer: {
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    maxWidth: '1200px', margin: '0 auto', gap: '60px', flexWrap: 'wrap',
+  },
+  showcaseLeft: {
+    flex: '1 1 400px', maxWidth: '450px',
+  },
+  showcaseBadge: {
+    display: 'inline-flex', alignItems: 'center', gap: '6px',
+    background: 'rgba(74,222,128,0.1)', padding: '6px 12px', borderRadius: '8px',
+    color: '#4ade80', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '20px',
+  },
+  showcaseTitle: {
+    fontSize: '2.5rem', fontWeight: 800, fontFamily: "'Nunito', sans-serif", color: '#fff', lineHeight: 1.2, marginBottom: '20px',
+  },
+  showcaseDesc: {
+    fontSize: '1.05rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: '32px',
+  },
+  showcaseBtn: {
+    background: '#4ade80', color: '#000', border: 'none', padding: '14px 28px', borderRadius: '8px',
+    fontWeight: 700, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer',
+  },
+  showcaseRight: {
+    flex: '1 1 600px',
+  },
+  showcaseMockup: {
+    background: '#121e17', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.08)',
+    display: 'flex', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
+  },
+  mockSidebar: {
+    width: '160px', background: '#0a140d', padding: '20px', borderRight: '1px solid rgba(255,255,255,0.05)',
+    display: 'flex', flexDirection: 'column', gap: '16px',
+  },
+  mockLogo: { fontSize: '0.9rem', fontWeight: 700, marginBottom: '20px', color: '#fff' },
+  mockNavItemActive: { background: 'rgba(74,222,128,0.15)', color: '#4ade80', padding: '8px 12px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600 },
+  mockNavItem: { color: 'rgba(255,255,255,0.5)', padding: '8px 12px', fontSize: '0.8rem', fontWeight: 500 },
+  mockMain: {
+    flex: 1, padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px',
+  },
+  mockHeader: { fontSize: '1.05rem', fontWeight: 600, color: '#fff' },
+  mockCards: { display: 'flex', gap: '12px' },
+  mockCard: { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '16px', flex: 1 },
+  mockCardTitle: { fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', marginBottom: '8px' },
+  mockCardValue: { fontSize: '1.3rem', fontWeight: 700, color: '#fff', marginBottom: '12px' },
+  mockCardSub: { fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', fontWeight: 500 },
+  mockChartPlaceholder: { height: '30px', background: 'linear-gradient(90deg, #4ade80 0%, #16a34a 100%)', borderRadius: '4px', opacity: 0.8 },
+  mockBottomArea: { display: 'flex', gap: '12px' },
+  mockRing: { width: 80, height: 80, borderRadius: '50%', border: '4px solid rgba(74,222,128,0.3)', borderTopColor: '#4ade80', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '0 auto', marginTop: '10px' },
+  mockRingValue: { fontSize: '1.2rem', fontWeight: 700, color: '#fff', lineHeight: 1 },
+  mockRingSub: { fontSize: '0.5rem', color: 'rgba(255,255,255,0.5)', marginTop: 4 },
 }
