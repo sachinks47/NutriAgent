@@ -15,6 +15,7 @@ import Landing        from './pages/Landing.jsx'
 
 export default function App() {
   const [collapsed, setCollapsed] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <BrowserRouter>
@@ -24,13 +25,13 @@ export default function App() {
         {/* App Layout for all other routes */}
         <Route path="/*" element={
           <div className="app-layout">
-            <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} />
+            <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
             <div
               className="main-content"
               style={{ marginLeft: collapsed ? 64 : 240, transition: 'margin-left 0.35s cubic-bezier(0.4,0,0.2,1)' }}
             >
-              <Header />
+              <Header onToggleMobileMenu={() => setMobileMenuOpen(o => !o)} />
               <main style={{ flex: 1, overflowY: 'auto' }}>
                 <Routes>
                   <Route path="/dashboard"       element={<Dashboard />}      />

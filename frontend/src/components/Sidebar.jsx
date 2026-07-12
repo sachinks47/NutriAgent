@@ -14,11 +14,15 @@ const NAV_ITEMS = [
   { path: '/health-advisory', icon: HeartPulse,      label: 'Health Advisory'},
 ]
 
-export default function Sidebar({ collapsed, onToggle }) {
+export default function Sidebar({ collapsed, onToggle, mobileMenuOpen, setMobileMenuOpen }) {
   const location = useLocation()
 
   return (
-    <aside style={{ ...styles.sidebar, width: collapsed ? 64 : 240 }}>
+    <>
+      <aside 
+        style={{ ...styles.sidebar, width: collapsed ? 64 : 240 }}
+        className={`sidebar-container ${mobileMenuOpen ? 'open' : ''}`}
+      >
       {/* Logo */}
       <div style={styles.logo}>
         <div style={styles.logoIcon} className="animate-pulse-glow">
@@ -47,6 +51,7 @@ export default function Sidebar({ collapsed, onToggle }) {
                 ...(active ? styles.navItemActive : {}),
                 justifyContent: collapsed ? 'center' : 'flex-start',
               }}
+              onClick={() => { if (mobileMenuOpen) setMobileMenuOpen(false) }}
               data-tooltip={collapsed ? label : undefined}
             >
               <span style={{ ...styles.navIcon, ...(active ? styles.navIconActive : {}) }}>
@@ -71,11 +76,18 @@ export default function Sidebar({ collapsed, onToggle }) {
         </div>
       )}
 
-      {/* Collapse toggle */}
-      <button style={styles.collapseBtn} onClick={onToggle} title={collapsed ? 'Expand' : 'Collapse'}>
+      {/* Collapse toggle (hide on mobile) */}
+      <button style={styles.collapseBtn} className="sidebar-collapse-btn" onClick={onToggle} title={collapsed ? 'Expand' : 'Collapse'}>
         {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
       </button>
     </aside>
+    {mobileMenuOpen && (
+      <div 
+        style={{ position: 'fixed', inset: 0, zIndex: 999 }} 
+        onClick={() => setMobileMenuOpen(false)}
+      />
+    )}
+    </>
   )
 }
 

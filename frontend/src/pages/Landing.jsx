@@ -13,12 +13,12 @@ export default function Landing() {
       </div>
 
       {/* Navbar */}
-      <nav style={s.nav} className="animate-fade-in">
+      <nav style={s.nav} className="animate-fade-in responsive-nav">
         <div style={s.logo}>
           <div style={s.logoIcon}>🥑</div>
           NutriAgent
         </div>
-        <div style={s.navLinks}>
+        <div style={s.navLinks} className="responsive-nav-links">
           <a href="#" style={s.navLink}>Features</a>
           <a href="#" style={s.navLink}>How It Works</a>
           <a href="#" style={s.navLink}>Pricing</a>
@@ -31,7 +31,7 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section style={s.hero}>
+      <section style={s.hero} className="responsive-hero">
         <div style={s.heroLeft} className="animate-slide-in-left">
           <div style={s.badge}>
             <Sparkles size={14} color="#4ade80" />
@@ -47,7 +47,7 @@ export default function Landing() {
             Personalized meal plans, smart tracking, and real-time insights to help you eat better, stay healthy and live your best life.
           </p>
           
-          <div style={s.ctaGroup}>
+          <div style={s.ctaGroup} className="cta-group">
             <button style={s.primaryBtn} onClick={() => navigate('/profile')}>
               Get Started <ArrowRight size={18} />
             </button>
@@ -62,7 +62,7 @@ export default function Landing() {
           <p style={s.hiwSubtitle}>Your journey to better health in 4 simple steps</p>
         </div>
 
-        <div style={s.stepsContainer}>
+        <div style={s.stepsContainer} className="responsive-steps-container">
           {/* Step 1 */}
           <div style={s.stepCard}>
             <div style={s.stepNumber}>1</div>
@@ -71,7 +71,7 @@ export default function Landing() {
             <p style={s.stepDesc}>Tell us about yourself, your goals and preferences.</p>
           </div>
           
-          <div style={s.stepConnector} />
+          <div style={s.stepConnector} className="responsive-step-connector" />
 
           {/* Step 2 */}
           <div style={s.stepCard}>
@@ -81,7 +81,7 @@ export default function Landing() {
             <p style={s.stepDesc}>Our AI analyzes your data and creates a personalized plan.</p>
           </div>
 
-          <div style={s.stepConnector} />
+          <div style={s.stepConnector} className="responsive-step-connector" />
 
           {/* Step 3 */}
           <div style={s.stepCard}>
@@ -91,7 +91,7 @@ export default function Landing() {
             <p style={s.stepDesc}>Receive customized meal plans, recipes and nutrition tips.</p>
           </div>
 
-          <div style={s.stepConnector} />
+          <div style={s.stepConnector} className="responsive-step-connector" />
 
           {/* Step 4 */}
           <div style={s.stepCard}>
@@ -105,7 +105,7 @@ export default function Landing() {
 
       {/* Feature Showcase Section */}
       <section style={s.showcaseSection}>
-        <div style={s.showcaseContainer}>
+        <div style={s.showcaseContainer} className="responsive-showcase">
           <div style={s.showcaseLeft}>
             <div style={s.showcaseBadge}>
               <Sparkles size={12} color="#4ade80" /> SMART DASHBOARD
@@ -121,8 +121,8 @@ export default function Landing() {
             </button>
           </div>
           <div style={s.showcaseRight}>
-            <div style={s.showcaseMockup}>
-              <div style={s.mockSidebar}>
+            <div style={s.showcaseMockup} className="responsive-mockup">
+              <div style={s.mockSidebar} className="responsive-mockup-sidebar">
                 <div style={s.mockLogo}>🥑 NutriAgent</div>
                 <div style={s.mockNavItemActive}>🏠 Overview</div>
                 <div style={s.mockNavItem}>🍴 Meals</div>
@@ -130,9 +130,9 @@ export default function Landing() {
                 <div style={s.mockNavItem}>📈 Progress</div>
                 <div style={s.mockNavItem}>🍳 Recipes</div>
               </div>
-              <div style={s.mockMain}>
+              <div style={s.mockMain} className="responsive-mockup-main">
                 <div style={s.mockHeader}>Dashboard Overview</div>
-                <div style={s.mockCards}>
+                <div style={s.mockCards} className="responsive-mockup-cards">
                   <div style={s.mockCard}>
                     <div style={s.mockCardTitle}>Calories</div>
                     <div style={s.mockCardValue}>1820 <span style={s.mockCardSub}>kcal</span></div>
@@ -149,7 +149,7 @@ export default function Landing() {
                     <div style={{...s.mockChartPlaceholder, background: 'linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%)'}} />
                   </div>
                 </div>
-                <div style={s.mockBottomArea}>
+                <div style={s.mockBottomArea} className="responsive-mockup-cards">
                   <div style={{...s.mockCard, flex: 2}}>
                     <div style={s.mockCardTitle}>Nutrition Trend</div>
                     <div style={{height: '100px', borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'linear-gradient(180deg, rgba(74,222,128,0.15) 0%, transparent 100%)', position: 'relative', marginTop: 10}}>

@@ -236,7 +236,7 @@ export default function Profile() {
 }
 
 const s = {
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: 24 },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 24 },
   section: { padding: '28px 28px' },
   sectionTitle: { fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 },
   fields: { display: 'flex', flexDirection: 'column', gap: 16 },

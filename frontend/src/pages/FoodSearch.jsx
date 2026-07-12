@@ -209,7 +209,7 @@ export default function FoodSearch() {
       {/* Log Modal */}
       {logModal && (
         <div style={s.modalOverlay} onClick={() => setLogModal(null)}>
-          <div style={s.modal} className="glass-card animate-scale-in" onClick={e => e.stopPropagation()}>
+          <div style={s.modal} className="glass-card animate-scale-in responsive-glass-modal" onClick={e => e.stopPropagation()}>
             <h3 style={{ marginBottom: 20, fontSize: '1.1rem', fontWeight: 700 }}>Log: {logModal.food_name}</h3>
             <div className="form-group" style={{ marginBottom: 16 }}>
               <label className="form-label">Quantity / Serving</label>
@@ -242,8 +242,8 @@ const s = {
   clearBtn: { background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'flex', padding: 4 },
   resultCount: { marginTop: 8, fontSize: '0.8rem', color: 'var(--text-muted)' },
   resultBadge: { background: 'rgba(34,197,94,0.12)', color: 'var(--primary)', padding: '2px 8px', borderRadius: 6, fontWeight: 600 },
-  skeletonGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 },
-  resultsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 },
+  skeletonGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 },
+  resultsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 },
   foodCard: { padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 14 },
   foodHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
   foodName: { fontSize: '0.97rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 },

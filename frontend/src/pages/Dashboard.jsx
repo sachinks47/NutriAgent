@@ -131,7 +131,7 @@ export default function Dashboard() {
   return (
     <div className="page-container">
       {/* Header Row */}
-      <div style={s.headerRow} className="animate-slide-up">
+      <div style={s.headerRow} className="animate-slide-up responsive-header-row">
         <div>
           <h1 className="page-title">Good {getGreeting()}! 👋</h1>
           <p className="page-subtitle">
@@ -140,7 +140,7 @@ export default function Dashboard() {
               : "No meals logged today yet. Start tracking!"}
           </p>
         </div>
-        <div style={s.quickActions}>
+        <div style={s.quickActions} className="responsive-quick-actions">
           <GlassButton size="sm" icon={UtensilsCrossed} onClick={() => navigate('/meal-log')}>Log Meal</GlassButton>
           <GlassButton size="sm" variant="secondary" icon={Search} onClick={() => navigate('/food-search')}>Search Food</GlassButton>
           <GlassButton size="sm" variant="secondary" icon={HeartPulse} onClick={() => navigate('/health-advisory')}>Advisory</GlassButton>
@@ -157,7 +157,7 @@ export default function Dashboard() {
           const pct = goal > 0 ? (consumed / goal) * 100 : 0
 
           return (
-            <div key={m.key} className="glass-card" style={{ ...s.ringCard, animationDelay: `${i * 80}ms` }}>
+            <div key={m.key} className="glass-card responsive-ring-card" style={{ ...s.ringCard, animationDelay: `${i * 80}ms` }}>
               <ProgressRing pct={pct} color={m.color} size={82} />
               <div style={s.ringInfo}>
                 <div style={s.ringLabel}>{m.icon} {m.label}</div>
@@ -185,7 +185,7 @@ export default function Dashboard() {
       {view === 'daily' ? (
         <div className="cards-grid-2 animate-slide-up delay-200">
           {/* Meal Calories Bar Chart */}
-          <div className="glass-card" style={s.chartCard}>
+          <div className="glass-card responsive-chart-card" style={s.chartCard}>
             <h3 style={s.chartTitle}><TrendingUp size={16} /> Today's Meals</h3>
             {mealBarData.length > 0 ? (
               <ResponsiveContainer width="100%" height={220}>
@@ -207,7 +207,7 @@ export default function Dashboard() {
           </div>
 
           {/* Micronutrient Radar */}
-          <div className="glass-card" style={s.chartCard}>
+          <div className="glass-card responsive-chart-card" style={s.chartCard}>
             <h3 style={s.chartTitle}><Leaf size={16} /> Micronutrient Coverage</h3>
             <ResponsiveContainer width="100%" height={220}>
               <RadarChart data={radarData} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
@@ -219,7 +219,7 @@ export default function Dashboard() {
           </div>
         </div>
       ) : (
-        <div className="glass-card animate-slide-up delay-200" style={s.chartCard}>
+        <div className="glass-card animate-slide-up delay-200 responsive-chart-card" style={s.chartCard}>
           <h3 style={s.chartTitle}><TrendingUp size={16} /> Weekly Nutrition Trend</h3>
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={weeklyTrend} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
@@ -257,7 +257,7 @@ export default function Dashboard() {
           <div className="section-label">Today's Meals ({meals.length})</div>
           <div style={s.mealList}>
             {meals.slice(0, 5).map(m => (
-              <div key={m.id} className="glass-card" style={s.mealItem}>
+              <div key={m.id} className="glass-card responsive-meal-item" style={s.mealItem}>
                 <div style={s.mealIcon}>{getMealIcon(m.meal_type)}</div>
                 <div style={{ flex: 1 }}>
                   <div style={s.mealName}>{m.meal_name}</div>
@@ -266,7 +266,7 @@ export default function Dashboard() {
                     · {formatTime(m.logged_at)}
                   </div>
                 </div>
-                <div style={s.mealRight}>
+                <div style={s.mealRight} className="responsive-meal-right">
                   <div style={s.mealCals}>{Math.round(m.total_calories)} kcal</div>
                   <div style={s.mealMacros}>
                     <span style={{ color: '#3b82f6' }}>P {Math.round(m.total_protein_g)}g</span>

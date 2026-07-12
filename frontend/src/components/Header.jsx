@@ -11,7 +11,7 @@ const PAGE_TITLES = {
   '/health-advisory': { title: 'Health Advisory', subtitle: 'Condition-specific guidance'  },
 }
 
-export default function Header() {
+export default function Header({ onToggleMobileMenu }) {
   const { pathname } = useLocation()
   const { title, subtitle } = PAGE_TITLES[pathname] || PAGE_TITLES['/']
 
@@ -31,7 +31,11 @@ export default function Header() {
   }
 
   return (
-    <header style={styles.header}>
+    <header style={styles.header} className="responsive-header">
+      <button className="hamburger-btn" onClick={onToggleMobileMenu} style={{ marginRight: 12 }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
       {/* Breadcrumb / Title */}
       <div style={styles.titleBlock}>
         <h1 style={styles.title}>{title}</h1>
