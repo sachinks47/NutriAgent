@@ -19,11 +19,6 @@ export default function Landing() {
           NutriAgent
         </div>
         <div style={s.navLinks} className="responsive-nav-links">
-          <a href="#" style={s.navLink}>Features</a>
-          <a href="#" style={s.navLink}>How It Works</a>
-          <a href="#" style={s.navLink}>Pricing</a>
-          <a href="#" style={s.navLink}>About Us</a>
-          <a href="#" style={s.navLink}>Blog</a>
         </div>
         <div style={s.navRight}>
           <button style={s.navCta} onClick={() => navigate('/profile')}>Get Started</button>
