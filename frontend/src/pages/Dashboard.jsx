@@ -190,9 +190,9 @@ export default function Dashboard() {
             {mealBarData.length > 0 ? (
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={mealBarData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(34,197,94,0.1)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#6b8f76' }} />
-                  <YAxis tick={{ fontSize: 11, fill: '#6b8f76' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                  <XAxis dataKey="name" tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
+                  <YAxis tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
                   <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #dcfce7', fontSize: '0.8rem' }} />
                   <Bar dataKey="Calories" fill="#22c55e" radius={[6,6,0,0]} />
                   <Bar dataKey="Protein" fill="#3b82f6" radius={[6,6,0,0]} />
@@ -211,8 +211,8 @@ export default function Dashboard() {
             <h3 style={s.chartTitle}><Leaf size={16} /> Micronutrient Coverage</h3>
             <ResponsiveContainer width="100%" height={220}>
               <RadarChart data={radarData} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
-                <PolarGrid stroke="rgba(34,197,94,0.15)" />
-                <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: '#6b8f76' }} />
+                <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
                 <Radar name="Today" dataKey="A" stroke="#22c55e" fill="#22c55e" fillOpacity={0.25} dot={{ fill: '#22c55e', r: 3 }} />
               </RadarChart>
             </ResponsiveContainer>
@@ -223,10 +223,10 @@ export default function Dashboard() {
           <h3 style={s.chartTitle}><TrendingUp size={16} /> Weekly Nutrition Trend</h3>
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={weeklyTrend} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(34,197,94,0.1)" />
-              <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#6b8f76' }} />
-              <YAxis tick={{ fontSize: 11, fill: '#6b8f76' }} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #dcfce7', fontSize: '0.8rem' }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+              <XAxis dataKey="date" tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
+              <YAxis tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid var(--border-solid)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.8rem' }} />
               <Legend />
               <Line type="monotone" dataKey="Calories" stroke="#22c55e" strokeWidth={2.5} dot={{ r: 4, fill: '#22c55e' }} />
               <Line type="monotone" dataKey="Protein"  stroke="#3b82f6" strokeWidth={2} dot={{ r: 3, fill: '#3b82f6' }} strokeDasharray="4 2" />
@@ -309,24 +309,24 @@ const s = {
   quickActions: { display: 'flex', gap: 8, flexWrap: 'wrap' },
   ringCard: { display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px' },
   ringInfo: { display: 'flex', flexDirection: 'column', gap: 2 },
-  ringLabel: { fontSize: '0.78rem', fontWeight: 600, color: '#6b8f76', textTransform: 'uppercase', letterSpacing: '0.04em' },
-  ringValue: { fontSize: '1.4rem', fontWeight: 800, color: '#0f2d1a', fontFamily: "'Nunito', sans-serif", lineHeight: 1.1 },
-  ringUnit: { fontSize: '0.75rem', fontWeight: 500, color: '#6b8f76', marginLeft: 2 },
-  ringGoal: { fontSize: '0.75rem', color: '#9dbfaa' },
-  viewToggle: { display: 'flex', gap: 6, marginBottom: 20, background: 'rgba(34,197,94,0.06)', padding: 4, borderRadius: 12, width: 'fit-content', border: '1px solid rgba(34,197,94,0.12)' },
-  toggleBtn: { padding: '7px 18px', borderRadius: 9, border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '0.83rem', fontWeight: 600, color: '#6b8f76', transition: 'all 0.2s' },
+  ringLabel: { fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' },
+  ringValue: { fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: "'Nunito', sans-serif", lineHeight: 1.1 },
+  ringUnit: { fontSize: '0.75rem', fontWeight: 500, color: 'var(--text-muted)', marginLeft: 2 },
+  ringGoal: { fontSize: '0.75rem', color: 'var(--text-light)' },
+  viewToggle: { display: 'flex', gap: 6, marginBottom: 20, background: 'rgba(255,255,255,0.05)', padding: 4, borderRadius: 12, width: 'fit-content', border: '1px solid var(--border-solid)' },
+  toggleBtn: { padding: '7px 18px', borderRadius: 9, border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '0.83rem', fontWeight: 600, color: 'var(--text-muted)', transition: 'all 0.2s' },
   toggleActive: { background: '#22c55e', color: '#fff', boxShadow: '0 2px 8px rgba(34,197,94,0.3)' },
   chartCard: { padding: '20px 24px' },
-  chartTitle: { fontSize: '0.95rem', fontWeight: 700, color: '#0f2d1a', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 },
+  chartTitle: { fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 },
   defSection: { marginTop: 24 },
   defGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 12 },
   defCard: { display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: 'rgba(254,243,199,0.6)', borderColor: 'rgba(245,158,11,0.2)' },
   defText: { fontSize: '0.84rem', color: '#92400e', fontWeight: 500 },
   mealList: { display: 'flex', flexDirection: 'column', gap: 10 },
   mealItem: { display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px' },
-  mealIcon: { fontSize: '1.5rem', width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(34,197,94,0.08)', borderRadius: 10 },
-  mealName: { fontSize: '0.9rem', fontWeight: 600, color: '#0f2d1a' },
-  mealMeta: { fontSize: '0.76rem', color: '#6b8f76', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginTop: 2 },
+  mealIcon: { fontSize: '1.5rem', width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(34,197,94,0.15)', borderRadius: 10 },
+  mealName: { fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' },
+  mealMeta: { fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginTop: 2 },
   mealType: { textTransform: 'capitalize', background: 'rgba(34,197,94,0.1)', color: '#15803d', padding: '1px 7px', borderRadius: 6, fontSize: '0.72rem', fontWeight: 600 },
   mealRight: { display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3 },
   mealCals: { fontSize: '0.95rem', fontWeight: 800, color: '#15803d', whiteSpace: 'nowrap', fontFamily: "'Nunito', sans-serif" },

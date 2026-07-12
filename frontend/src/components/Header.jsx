@@ -45,10 +45,10 @@ export default function Header() {
 const styles = {
   header: {
     height: 68,
-    background: 'rgba(255,255,255,0.88)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    borderBottom: '1px solid rgba(34,197,94,0.14)',
+    background: 'var(--glass-bg)',
+    backdropFilter: 'var(--glass-blur)',
+    WebkitBackdropFilter: 'var(--glass-blur)',
+    borderBottom: '1px solid var(--border-solid)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -62,13 +62,13 @@ const styles = {
   title: {
     fontSize: '1.2rem',
     fontWeight: 800,
-    color: '#0f2d1a',
+    color: 'var(--text-primary)',
     fontFamily: "'Nunito', sans-serif",
     lineHeight: 1.2,
   },
   subtitle: {
     fontSize: '0.75rem',
-    color: '#6b8f76',
+    color: 'var(--text-muted)',
     marginTop: 1,
   },
   right: {
@@ -88,14 +88,14 @@ const styles = {
   dateText: {
     fontSize: '0.78rem',
     fontWeight: 600,
-    color: '#15803d',
+    color: 'var(--primary-light)',
   },
   avatar: {
     width: 38,
     height: 38,
     borderRadius: '50%',
-    background: 'rgba(34,197,94,0.1)',
-    border: '1.5px solid rgba(34,197,94,0.25)',
+    background: 'rgba(34,197,94,0.15)',
+    border: '1.5px solid rgba(34,197,94,0.4)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
