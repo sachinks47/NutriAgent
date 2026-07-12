@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { Bell, User, Leaf } from 'lucide-react'
+import { Bell, User, Leaf, Moon, Sun } from 'lucide-react'
 
 const PAGE_TITLES = {
   '/':                { title: 'Dashboard',       subtitle: 'Your daily nutrition overview' },
@@ -14,6 +14,21 @@ const PAGE_TITLES = {
 export default function Header() {
   const { pathname } = useLocation()
   const { title, subtitle } = PAGE_TITLES[pathname] || PAGE_TITLES['/']
+
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
 
   return (
     <header style={styles.header}>
@@ -32,6 +47,13 @@ export default function Header() {
             {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
           </span>
         </div>
+
+        {/* Theme Toggle */}
+        <button style={styles.themeToggle} onClick={toggleTheme} title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}>
+          <div style={{ ...styles.toggleKnob, ...(theme === 'light' ? styles.knobLight : styles.knobDark) }}>
+            {theme === 'light' ? <Sun size={13} color="#f59e0b" /> : <Moon size={13} color="#1d4ed8" />}
+          </div>
+        </button>
 
         {/* Profile link */}
         <Link to="/profile" style={styles.avatar} title="My Profile">
@@ -102,5 +124,36 @@ const styles = {
     textDecoration: 'none',
     transition: 'all 0.2s',
     cursor: 'pointer',
+  },
+  themeToggle: {
+    width: 56,
+    height: 30,
+    borderRadius: 20,
+    background: 'rgba(34,197,94,0.1)',
+    border: '1.5px solid rgba(34,197,94,0.2)',
+    position: 'relative',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 4px',
+    transition: 'background 0.3s',
+    outline: 'none',
+  },
+  toggleKnob: {
+    width: 22,
+    height: 22,
+    borderRadius: '50%',
+    background: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+    transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+  },
+  knobLight: {
+    transform: 'translateX(24px)',
+  },
+  knobDark: {
+    transform: 'translateX(0)',
   },
 }

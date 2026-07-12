@@ -73,6 +73,49 @@
   --font-display: 'Nunito', var(--font-body);
 }
 
+/* ─── Light Theme ───────────────────────────────────────────────────────── */
+html[data-theme="light"] {
+  --bg-page:    #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.55);
+  --bg-card:    rgba(255, 255, 255, 0.75);
+
+  --glass-bg:     rgba(255, 255, 255, 0.65);
+  --glass-bg-md:  rgba(255, 255, 255, 0.85);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-border-green: rgba(34, 197, 94, 0.15);
+  --glass-shadow: 0 8px 32px rgba(34, 197, 94, 0.08), 0 2px 8px rgba(0,0,0,0.03);
+  --glass-shadow-lg: 0 16px 48px rgba(34, 197, 94, 0.12), 0 4px 16px rgba(0,0,0,0.06);
+
+  --text-primary:   #0f2d1a;
+  --text-secondary: #2d5a3d;
+  --text-muted:     #6b8f76;
+  --text-light:     #9dbfaa;
+
+  --border: rgba(34, 197, 94, 0.1);
+  --border-solid: rgba(34, 197, 94, 0.15);
+}
+
+html[data-theme="light"] body {
+  background: linear-gradient(rgba(240, 253, 244, 0.88), rgba(240, 253, 244, 0.92)), url('/landing_bg.png') center/cover fixed no-repeat;
+}
+
+html[data-theme="light"] .form-input,
+html[data-theme="light"] .form-select,
+html[data-theme="light"] .form-textarea {
+  background: rgba(255,255,255,0.9);
+}
+
+html[data-theme="light"] .form-input:focus,
+html[data-theme="light"] .form-select:focus,
+html[data-theme="light"] .form-textarea:focus {
+  background: #ffffff;
+}
+
+html[data-theme="light"] .empty-state-icon {
+  background: var(--green-100);
+}
+
 /* ─── Reset & Base ──────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
