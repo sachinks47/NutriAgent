@@ -14,10 +14,10 @@ const ALL_CONDITIONS = [
 
 function AdvisorySection({ icon, title, items, variant }) {
   const colors = {
-    include: { bg: 'rgba(34,197,94,0.06)',  border: 'rgba(34,197,94,0.2)',  text: '#15803d', badgeBg: 'rgba(34,197,94,0.12)',  icon: '#22c55e' },
-    avoid:   { bg: 'rgba(239,68,68,0.06)',  border: 'rgba(239,68,68,0.2)',  text: '#b91c1c', badgeBg: 'rgba(239,68,68,0.1)',   icon: '#ef4444' },
-    tips:    { bg: 'rgba(59,130,246,0.06)', border: 'rgba(59,130,246,0.2)', text: '#1d4ed8', badgeBg: 'rgba(59,130,246,0.1)',  icon: '#3b82f6' },
-    warning: { bg: 'rgba(245,158,11,0.06)', border: 'rgba(245,158,11,0.2)', text: '#92400e', badgeBg: 'rgba(245,158,11,0.1)', icon: '#f59e0b' },
+    include: { bg: 'rgba(34,197,94,0.06)',  border: 'rgba(34,197,94,0.2)',  text: 'var(--primary-light)', badgeBg: 'rgba(34,197,94,0.12)',  icon: '#22c55e' },
+    avoid:   { bg: 'rgba(239,68,68,0.06)',  border: 'rgba(239,68,68,0.2)',  text: '#fca5a5', badgeBg: 'rgba(239,68,68,0.1)',   icon: '#ef4444' },
+    tips:    { bg: 'rgba(59,130,246,0.06)', border: 'rgba(59,130,246,0.2)', text: '#93c5fd', badgeBg: 'rgba(59,130,246,0.1)',  icon: '#3b82f6' },
+    warning: { bg: 'rgba(245,158,11,0.06)', border: 'rgba(245,158,11,0.2)', text: '#fcd34d', badgeBg: 'rgba(245,158,11,0.1)', icon: '#f59e0b' },
   }
   const c = colors[variant] || colors.tips
   if (!items || items.length === 0) return null
@@ -41,7 +41,7 @@ function AdvisorySection({ icon, title, items, variant }) {
           {items.map((item, i) => (
             <li key={i} style={{ ...ha.listItem, animationDelay: `${i * 50}ms` }} className="animate-slide-up">
               <span style={{ color: c.icon, flexShrink: 0 }}>{variant === 'warning' ? '⚠️' : '•'}</span>
-              <span style={{ color: '#2d5a3d', fontSize: '0.88rem' }}>{item}</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>{item}</span>
             </li>
           ))}
         </ul>
@@ -105,7 +105,7 @@ export default function HealthAdvisory() {
                 onClick={() => toggle(id)}
               >
                 <span style={ha.condIcon}>{icon}</span>
-                <span style={{ ...ha.condLabel, color: active ? color : '#2d5a3d' }}>{label}</span>
+                <span style={{ ...ha.condLabel, color: active ? color : 'var(--text-secondary)' }}>{label}</span>
                 {active && <CheckCircle size={16} color={color} style={{ flexShrink: 0 }} />}
               </button>
             )
@@ -124,7 +124,7 @@ export default function HealthAdvisory() {
         <div className="animate-slide-up delay-200" style={{ marginTop: 28 }}>
           {/* Active conditions badges */}
           <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#9dbfaa' }}>Advisory for:</span>
+            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-light)' }}>Advisory for:</span>
             {(advisory.conditions || selected).map(c => {
               const meta = ALL_CONDITIONS.find(a => a.id === c)
               return meta ? (
@@ -165,11 +165,11 @@ export default function HealthAdvisory() {
 
 const ha = {
   condCard: { padding: '28px 32px', marginBottom: 8 },
-  condTitle: { fontSize: '1.05rem', fontWeight: 700, color: '#0f2d1a', display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 },
-  condSub: { fontSize: '0.84rem', color: '#6b8f76', marginBottom: 20 },
+  condTitle: { fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 },
+  condSub: { fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: 20 },
   condGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12 },
-  condBtn: { display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderRadius: 14, border: '1.5px solid rgba(34,197,94,0.2)', background: 'rgba(255,255,255,0.7)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', backdropFilter: 'blur(8px)' },
-  condBtnActive: { background: 'rgba(255,255,255,0.9)' },
+  condBtn: { display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderRadius: 14, border: '1.5px solid var(--border-solid)', background: 'var(--bg-card)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', backdropFilter: 'var(--glass-blur)' },
+  condBtnActive: { background: 'var(--glass-bg-heavy)' },
   condIcon: { fontSize: '1.4rem' },
   condLabel: { flex: 1, fontSize: '0.88rem', fontWeight: 600, fontFamily: 'Inter, sans-serif' },
   sectionsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16, marginTop: 16 },
@@ -181,5 +181,5 @@ const ha = {
   list: { display: 'flex', flexDirection: 'column', gap: 8, listStyle: 'none' },
   listItem: { display: 'flex', gap: 8, alignItems: 'flex-start', lineHeight: 1.5 },
   generalCard: { display: 'flex', gap: 12, alignItems: 'flex-start', padding: '16px 20px', marginBottom: 20, background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 14 },
-  generalText: { fontSize: '0.88rem', color: '#2d5a3d', lineHeight: 1.7, fontStyle: 'italic' },
+  generalText: { fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7, fontStyle: 'italic' },
 }

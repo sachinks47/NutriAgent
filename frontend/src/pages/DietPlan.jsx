@@ -45,7 +45,7 @@ function DayCard({ day, dayData, isToday }) {
     >
       <div style={ds.dayHeader} onClick={() => setExpanded(e => !e)}>
         <div>
-          <div style={{ ...ds.dayName, ...(isToday ? { color: '#15803d', fontWeight: 800 } : {}) }}>
+          <div style={{ ...ds.dayName, ...(isToday ? { color: 'var(--primary)', fontWeight: 800 } : {}) }}>
             {isToday && <span style={ds.todayPip} />}
             {day}
           </div>
@@ -186,27 +186,27 @@ export default function DietPlan() {
 const ds = {
   summaryStrip: { display: 'flex', gap: 24, padding: '18px 28px', marginBottom: 20, flexWrap: 'wrap', alignItems: 'center' },
   summaryItem: { display: 'flex', flexDirection: 'column', gap: 2 },
-  summaryLabel: { fontSize: '0.7rem', fontWeight: 700, color: '#9dbfaa', textTransform: 'uppercase', letterSpacing: '0.06em' },
-  summaryVal: { fontSize: '0.92rem', fontWeight: 700, color: '#0f2d1a' },
+  summaryLabel: { fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em' },
+  summaryVal: { fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-primary)' },
   noteCard: { display: 'flex', gap: 12, alignItems: 'flex-start', padding: '14px 20px', marginBottom: 20, background: 'rgba(34,197,94,0.05)', borderColor: 'rgba(34,197,94,0.2)' },
   noteIcon: { fontSize: '1.4rem', flexShrink: 0 },
-  noteText: { fontSize: '0.87rem', color: '#2d5a3d', lineHeight: 1.6, fontStyle: 'italic' },
+  noteText: { fontSize: '0.87rem', color: 'var(--text-secondary)', lineHeight: 1.6, fontStyle: 'italic' },
   daysGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 },
   dayCard: { overflow: 'hidden' },
   dayCardToday: { border: '2px solid rgba(34,197,94,0.4)', boxShadow: '0 0 0 4px rgba(34,197,94,0.08)' },
   dayHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 18px', cursor: 'pointer' },
-  dayName: { fontSize: '0.97rem', fontWeight: 700, color: '#0f2d1a', display: 'flex', alignItems: 'center', gap: 6 },
+  dayName: { fontSize: '0.97rem', fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 6 },
   todayPip: { width: 8, height: 8, borderRadius: '50%', background: '#22c55e', display: 'inline-block', boxShadow: '0 0 6px rgba(34,197,94,0.6)' },
-  dayTotal: { fontSize: '0.75rem', color: '#6b8f76', marginTop: 2 },
-  expandBtn: { background: 'none', border: 'none', cursor: 'pointer', color: '#9dbfaa' },
+  dayTotal: { fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 2 },
+  expandBtn: { background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)' },
   slots: { padding: '0 14px 14px', display: 'flex', flexDirection: 'column', gap: 10 },
   slot: { background: 'rgba(34,197,94,0.04)', borderRadius: 10, padding: '10px 12px', border: '1px solid rgba(34,197,94,0.1)' },
   slotHeader: { display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 },
   slotIcon: { fontSize: '0.95rem' },
-  slotTitle: { fontSize: '0.72rem', fontWeight: 700, color: '#9dbfaa', textTransform: 'uppercase', letterSpacing: '0.05em', flex: 1 },
+  slotTitle: { fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.05em', flex: 1 },
   slotCals: { fontSize: '0.75rem', fontWeight: 700, color: '#22c55e', background: 'rgba(34,197,94,0.1)', padding: '2px 8px', borderRadius: 6 },
-  slotMeal: { fontSize: '0.85rem', fontWeight: 600, color: '#0f2d1a', marginBottom: 6 },
+  slotMeal: { fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6 },
   ingChips: { display: 'flex', flexWrap: 'wrap', gap: 4 },
-  ingChip: { fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(34,197,94,0.08)', color: '#15803d', borderRadius: 6, fontWeight: 500 },
-  ingMore: { fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(34,197,94,0.15)', color: '#15803d', borderRadius: 6, fontWeight: 700 },
+  ingChip: { fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(34,197,94,0.08)', color: 'var(--primary)', borderRadius: 6, fontWeight: 500 },
+  ingMore: { fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(34,197,94,0.15)', color: 'var(--primary)', borderRadius: 6, fontWeight: 700 },
 }

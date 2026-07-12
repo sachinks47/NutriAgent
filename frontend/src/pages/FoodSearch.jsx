@@ -10,8 +10,8 @@ function NutritionBar({ label, value, max, color }) {
   return (
     <div style={{ marginBottom: 6 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: 2 }}>
-        <span style={{ color: '#6b8f76', fontWeight: 500 }}>{label}</span>
-        <span style={{ color: '#2d5a3d' }}>{value}g</span>
+        <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{label}</span>
+        <span style={{ color: 'var(--text-secondary)' }}>{value}g</span>
       </div>
       <div className="progress-bar-track">
         <div className="progress-bar-fill" style={{ width: `${pct}%`, background: color }} />
@@ -238,33 +238,33 @@ export default function FoodSearch() {
 const s = {
   searchWrapper: { marginBottom: 28 },
   searchBox: { display: 'flex', alignItems: 'center', gap: 12, padding: '14px 20px' },
-  searchInput: { flex: 1, border: 'none', outline: 'none', fontSize: '0.95rem', background: 'transparent', color: '#0f2d1a', fontFamily: 'Inter, sans-serif' },
-  clearBtn: { background: 'none', border: 'none', cursor: 'pointer', color: '#9dbfaa', display: 'flex', padding: 4 },
-  resultCount: { marginTop: 8, fontSize: '0.8rem', color: '#6b8f76' },
-  resultBadge: { background: 'rgba(34,197,94,0.12)', color: '#15803d', padding: '2px 8px', borderRadius: 6, fontWeight: 600 },
+  searchInput: { flex: 1, border: 'none', outline: 'none', fontSize: '0.95rem', background: 'transparent', color: 'var(--text-primary)', fontFamily: 'Inter, sans-serif' },
+  clearBtn: { background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'flex', padding: 4 },
+  resultCount: { marginTop: 8, fontSize: '0.8rem', color: 'var(--text-muted)' },
+  resultBadge: { background: 'rgba(34,197,94,0.12)', color: 'var(--primary)', padding: '2px 8px', borderRadius: 6, fontWeight: 600 },
   skeletonGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 },
   resultsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 },
   foodCard: { padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 14 },
   foodHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
-  foodName: { fontSize: '0.97rem', fontWeight: 700, color: '#0f2d1a', lineHeight: 1.3 },
-  foodBrand: { display: 'block', fontSize: '0.72rem', color: '#6b8f76', marginTop: 2 },
-  foodCategory: { display: 'inline-block', fontSize: '0.68rem', background: 'rgba(34,197,94,0.1)', color: '#15803d', padding: '2px 8px', borderRadius: 6, marginTop: 4 },
+  foodName: { fontSize: '0.97rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 },
+  foodBrand: { display: 'block', fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 2 },
+  foodCategory: { display: 'inline-block', fontSize: '0.68rem', background: 'rgba(34,197,94,0.1)', color: 'var(--primary)', padding: '2px 8px', borderRadius: 6, marginTop: 4 },
   caloriesBadge: { display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flexShrink: 0 },
   calNum: { fontSize: '1.5rem', fontWeight: 800, color: '#22c55e', fontFamily: "'Nunito', sans-serif", lineHeight: 1 },
-  calUnit: { fontSize: '0.67rem', color: '#6b8f76', marginTop: 1 },
+  calUnit: { fontSize: '0.67rem', color: 'var(--text-muted)', marginTop: 1 },
   macros: {},
   aiSummary: { display: 'flex', gap: 8, alignItems: 'flex-start', background: 'rgba(34,197,94,0.06)', padding: '10px 12px', borderRadius: 10, border: '1px solid rgba(34,197,94,0.12)' },
-  aiText: { fontSize: '0.8rem', color: '#2d5a3d', fontStyle: 'italic', lineHeight: 1.5, margin: 0 },
+  aiText: { fontSize: '0.8rem', color: 'var(--text-secondary)', fontStyle: 'italic', lineHeight: 1.5, margin: 0 },
   microSection: { paddingTop: 8 },
-  microLabel: { fontSize: '0.7rem', fontWeight: 700, color: '#9dbfaa', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8 },
+  microLabel: { fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8 },
   microChips: { display: 'flex', flexWrap: 'wrap', gap: 6 },
   cardFooter: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 4 },
-  tapHint: { fontSize: '0.72rem', color: '#9dbfaa', display: 'flex', alignItems: 'center', gap: 4 },
+  tapHint: { fontSize: '0.72rem', color: 'var(--text-light)', display: 'flex', alignItems: 'center', gap: 4 },
   suggestions: { display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 8 },
-  modalOverlay: { position: 'fixed', inset: 0, background: 'rgba(15,45,26,0.5)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 },
+  modalOverlay: { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 },
   modal: { padding: '32px 36px', minWidth: 340, maxWidth: 480, width: '90%' },
 }
 
 const s2 = {
-  suggChip: { padding: '6px 16px', border: '1px solid rgba(34,197,94,0.25)', borderRadius: 20, background: 'rgba(255,255,255,0.7)', cursor: 'pointer', fontSize: '0.82rem', color: '#15803d', fontWeight: 500, transition: 'all 0.2s' },
+  suggChip: { padding: '6px 16px', border: '1px solid var(--border-solid)', borderRadius: 20, background: 'var(--bg-card)', cursor: 'pointer', fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: 500, transition: 'all 0.2s' },
 }

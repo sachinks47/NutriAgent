@@ -18,7 +18,7 @@ function ScoreBadge({ score }) {
       </div>
       <div>
         <div style={{ fontSize: '0.78rem', fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
-        <div style={{ fontSize: '0.7rem', color: '#9dbfaa' }}>Nutrition Score</div>
+        <div style={{ fontSize: '0.7rem', color: 'var(--text-light)' }}>Nutrition Score</div>
       </div>
     </div>
   )
@@ -41,20 +41,20 @@ function FeedbackCard({ feedback }) {
       <div style={s.feedbackGrid}>
         {feedback.positive_aspects?.length > 0 && (
           <div style={s.feedbackSection}>
-            <div style={{ ...s.feedbackLabel, color: '#15803d' }}>✅ Positive</div>
-            {feedback.positive_aspects.map((p, i) => <div key={i} style={{ ...s.feedbackItem, color: '#2d5a3d' }}>• {p}</div>)}
+            <div style={{ ...s.feedbackLabel, color: 'var(--primary-light)' }}>✅ Positive</div>
+            {feedback.positive_aspects.map((p, i) => <div key={i} style={{ ...s.feedbackItem, color: 'var(--text-secondary)' }}>• {p}</div>)}
           </div>
         )}
         {feedback.nutritional_gaps?.length > 0 && (
           <div style={s.feedbackSection}>
-            <div style={{ ...s.feedbackLabel, color: '#92400e' }}>⚠️ Gaps</div>
-            {feedback.nutritional_gaps.map((g, i) => <div key={i} style={{ ...s.feedbackItem, color: '#78350f' }}>• {g}</div>)}
+            <div style={{ ...s.feedbackLabel, color: 'var(--amber)' }}>⚠️ Gaps</div>
+            {feedback.nutritional_gaps.map((g, i) => <div key={i} style={{ ...s.feedbackItem, color: 'var(--text-secondary)' }}>• {g}</div>)}
           </div>
         )}
         {feedback.suggestions?.length > 0 && (
           <div style={s.feedbackSection}>
-            <div style={{ ...s.feedbackLabel, color: '#1e40af' }}>💡 Suggestions</div>
-            {feedback.suggestions.map((sug, i) => <div key={i} style={{ ...s.feedbackItem, color: '#1e3a8a' }}>• {sug}</div>)}
+            <div style={{ ...s.feedbackLabel, color: 'var(--blue)' }}>💡 Suggestions</div>
+            {feedback.suggestions.map((sug, i) => <div key={i} style={{ ...s.feedbackItem, color: 'var(--text-secondary)' }}>• {sug}</div>)}
           </div>
         )}
       </div>
@@ -101,7 +101,7 @@ function NutrientPill({ val, unit, color }) {
   return (
     <div style={{ ...s.nutrientPill, borderColor: color + '30', background: color + '0d' }}>
       <span style={{ color, fontWeight: 700, fontSize: '0.82rem' }}>{Math.round(val || 0)}</span>
-      <span style={{ color: '#9dbfaa', fontSize: '0.7rem' }}>{unit}</span>
+      <span style={{ color: 'var(--text-light)', fontSize: '0.7rem' }}>{unit}</span>
     </div>
   )
 }
@@ -365,27 +365,27 @@ export default function MealLog() {
 
 const s = {
   layout: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, alignItems: 'start' },
-  tabs: { display: 'flex', gap: 4, background: 'rgba(34,197,94,0.06)', padding: 4, borderRadius: 14, marginBottom: 16, border: '1px solid rgba(34,197,94,0.12)', width: 'fit-content' },
-  tab: { display: 'flex', alignItems: 'center', gap: 6, padding: '8px 18px', borderRadius: 10, border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: '#6b8f76', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif' },
-  tabActive: { background: '#fff', color: '#15803d', boxShadow: '0 2px 8px rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.2)' },
+  tabs: { display: 'flex', gap: 4, background: 'rgba(34,197,94,0.06)', padding: 4, borderRadius: 14, marginBottom: 16, border: '1px solid var(--border-solid)', width: 'fit-content' },
+  tab: { display: 'flex', alignItems: 'center', gap: 6, padding: '8px 18px', borderRadius: 10, border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif' },
+  tabActive: { background: 'var(--glass-bg)', color: 'var(--primary)', boxShadow: '0 2px 8px rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.2)' },
   inputCard: { padding: '22px 24px', display: 'flex', flexDirection: 'column', gap: 18 },
   mealTypeRow: { display: 'flex', gap: 6, flexWrap: 'wrap' },
-  typeBtn: { padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(34,197,94,0.2)', background: 'transparent', cursor: 'pointer', fontSize: '0.78rem', fontWeight: 500, color: '#6b8f76', textTransform: 'capitalize', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif' },
-  typeBtnActive: { background: 'rgba(34,197,94,0.1)', borderColor: '#22c55e', color: '#15803d', fontWeight: 700 },
+  typeBtn: { padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(34,197,94,0.2)', background: 'transparent', cursor: 'pointer', fontSize: '0.78rem', fontWeight: 500, color: 'var(--text-muted)', textTransform: 'capitalize', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif' },
+  typeBtnActive: { background: 'rgba(34,197,94,0.1)', borderColor: 'var(--primary)', color: 'var(--primary)', fontWeight: 700 },
   dropzone: { border: '2px dashed rgba(34,197,94,0.3)', borderRadius: 14, padding: 28, cursor: 'pointer', transition: 'all 0.2s', background: 'rgba(34,197,94,0.03)' },
   dropzoneActive: { borderColor: '#22c55e', background: 'rgba(34,197,94,0.08)' },
   removeImg: { position: 'absolute', top: 6, right: 6, width: 24, height: 24, borderRadius: '50%', background: 'rgba(0,0,0,0.5)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' },
   voicePanel: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, padding: '20px 0' },
   voiceRing: { width: 100, height: 100, borderRadius: '50%', border: '3px solid rgba(34,197,94,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(34,197,94,0.05)', transition: 'all 0.3s' },
   voiceRingActive: { borderColor: '#ef4444', background: 'rgba(239,68,68,0.05)', animation: 'pulse-glow 1s ease infinite' },
-  voiceInstruction: { fontSize: '0.87rem', color: '#6b8f76', textAlign: 'center' },
+  voiceInstruction: { fontSize: '0.87rem', color: 'var(--text-muted)', textAlign: 'center' },
   voiceTranscript: { display: 'flex', gap: 6, alignItems: 'center', background: 'rgba(34,197,94,0.08)', padding: '10px 16px', borderRadius: 10, border: '1px solid rgba(34,197,94,0.2)' },
-  voiceHear: { fontSize: '0.78rem', color: '#9dbfaa', fontWeight: 600 },
-  voiceText: { fontSize: '0.88rem', color: '#0f2d1a', fontWeight: 600, fontStyle: 'italic' },
+  voiceHear: { fontSize: '0.78rem', color: 'var(--text-light)', fontWeight: 600 },
+  voiceText: { fontSize: '0.88rem', color: 'var(--text-primary)', fontWeight: 600, fontStyle: 'italic' },
   feedbackCard: { padding: '22px 24px', marginTop: 20 },
   feedbackHeader: { display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, flexWrap: 'wrap' },
-  feedbackTitle: { fontSize: '1rem', fontWeight: 700, color: '#0f2d1a', flex: 1 },
-  feedbackSummary: { fontSize: '0.87rem', color: '#2d5a3d', lineHeight: 1.6, marginBottom: 16, padding: '10px 14px', background: 'rgba(34,197,94,0.05)', borderRadius: 10, border: '1px solid rgba(34,197,94,0.1)' },
+  feedbackTitle: { fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', flex: 1 },
+  feedbackSummary: { fontSize: '0.87rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 16, padding: '10px 14px', background: 'rgba(34,197,94,0.05)', borderRadius: 10, border: '1px solid rgba(34,197,94,0.1)' },
   feedbackGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 14 },
   feedbackSection: { display: 'flex', flexDirection: 'column', gap: 5 },
   feedbackLabel: { fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4 },
@@ -393,7 +393,7 @@ const s = {
   mealItem: { display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', flexWrap: 'wrap' },
   mealLeft: { display: 'flex', alignItems: 'center', gap: 10, flex: 1 },
   mealTypeIcon: { fontSize: '1.4rem' },
-  mealName: { fontSize: '0.88rem', fontWeight: 600, color: '#0f2d1a' },
+  mealName: { fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)', textTransform: 'uppercase' },
   mealMeta: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 3, flexWrap: 'wrap' },
   mealNutrients: { display: 'flex', gap: 5, flexWrap: 'wrap' },
   nutrientPill: { display: 'flex', alignItems: 'center', gap: 3, padding: '3px 8px', borderRadius: 8, border: '1px solid' },
