@@ -3,7 +3,8 @@ import axios from 'axios'
 // Direct URL to backend — works for both local dev and Docker
 // For local dev: backend runs on http://localhost:8000
 // For Docker/production: set VITE_API_URL=http://your-server/api at build time
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+const BASE_URL = rawUrl.replace(/\/+$/, '')
 
 const client = axios.create({
   baseURL: BASE_URL,
