@@ -32,14 +32,21 @@ export default function Header({ onToggleMobileMenu }) {
 
   return (
     <header style={styles.header} className="responsive-header">
-      <button className="hamburger-btn" onClick={onToggleMobileMenu} style={{ marginRight: 12 }}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <button className="hamburger-btn" onClick={onToggleMobileMenu} style={{ marginRight: 0 }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
 
-      {/* Breadcrumb / Title */}
-      <div style={styles.titleBlock}>
-        <h1 style={styles.title}>{title}</h1>
-        <p style={styles.subtitle}>{subtitle}</p>
+        <Link to="/dashboard" style={styles.headerLogo} title="Go to Dashboard">
+          <div style={styles.headerLogoIcon}>🥑</div>
+          NutriAgent
+        </Link>
+        
+        {/* Breadcrumb / Title */}
+        <div style={styles.titleBlock} className="desktop-only">
+          <h1 style={styles.title}>{title}</h1>
+          <p style={styles.subtitle}>{subtitle}</p>
+        </div>
       </div>
 
       {/* Right side */}
@@ -83,6 +90,22 @@ const styles = {
     top: 0,
     zIndex: 50,
     boxShadow: '0 2px 12px rgba(34,197,94,0.06)',
+  },
+  headerLogo: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    fontSize: '1.25rem',
+    fontWeight: 800,
+    fontFamily: "'Nunito', sans-serif",
+    textDecoration: 'none',
+    color: 'var(--text-primary)',
+  },
+  headerLogoIcon: {
+    background: 'rgba(34,197,94,0.15)',
+    padding: '4px 6px',
+    borderRadius: 8,
+    fontSize: '1.1rem',
   },
   titleBlock: {},
   title: {

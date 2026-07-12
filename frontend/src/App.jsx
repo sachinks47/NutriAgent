@@ -17,6 +17,15 @@ export default function App() {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  React.useEffect(() => {
+    const entries = window.performance.getEntriesByType('navigation')
+    if (entries.length > 0 && entries[0].type === 'reload') {
+      if (window.location.pathname !== '/' && window.location.pathname !== '/dashboard') {
+        window.location.href = '/dashboard'
+      }
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>

@@ -610,6 +610,9 @@ a:hover { color: var(--primary-dark); }
   .responsive-mockup-cards {
     flex-direction: column !important;
   }
+  .desktop-only {
+    display: none !important;
+  }
 }
 
 /* General component overrides */

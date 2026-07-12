@@ -3,8 +3,7 @@ import { mealsAPI } from '../api/client.js'
 import GlassButton from '../components/GlassButton.jsx'
 import LoadingScreen from '../components/LoadingScreen.jsx'
 import toast from 'react-hot-toast'
-import { Mic, MicOff, Upload, Type, Trash2, Star, Zap, X } from 'lucide-react'
-import { useDropzone } from 'react-dropzone'
+import { Mic, MicOff, Type, Trash2, Star, Zap } from 'lucide-react'
 
 const MEAL_TYPES = ['breakfast', 'lunch', 'dinner', 'snack']
 
@@ -119,8 +118,6 @@ export default function MealLog() {
   const [loading, setLoading] = useState(false)
   const [pageLoading, setPageLoading] = useState(true)
   const [listening, setListening] = useState(false)
-  const [imageFile, setImageFile] = useState(null)
-  const [imagePreview, setImagePreview] = useState(null)
   const recognitionRef = useRef(null)
 
   const today = new Date().toISOString().split('T')[0]
@@ -159,40 +156,6 @@ export default function MealLog() {
     }
   }
 
-  // IMAGE submit
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: { 'image/*': [] },
-    maxFiles: 1,
-    onDrop: (files) => {
-      const f = files[0]
-      if (!f) return
-      setImageFile(f)
-      const reader = new FileReader()
-      reader.onload = () => setImagePreview(reader.result)
-      reader.readAsDataURL(f)
-    }
-  })
-
-  const handleImageSubmit = async () => {
-    if (!imageFile) return toast.error('Please upload an image')
-    setLoading(true)
-    const fd = new FormData()
-    fd.append('file', imageFile)
-    fd.append('meal_type', form.meal_type)
-    fd.append('notes', form.notes)
-    try {
-      const r = await mealsAPI.logImage(fd)
-      setLastFeedback(r.data.ai_feedback)
-      toast.success(`Detected: ${r.data.meal_name}`)
-      setImageFile(null)
-      setImagePreview(null)
-      refreshMeals()
-    } catch (e) {
-      toast.error(e.friendlyMessage || 'Image analysis failed')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   // VOICE
   const startListening = () => {
@@ -237,7 +200,6 @@ export default function MealLog() {
           <div style={s.tabs} className="animate-slide-up delay-100">
             {[
               { id: 'text',  icon: Type,   label: 'Text'  },
-              { id: 'image', icon: Upload, label: 'Image' },
               { id: 'voice', icon: Mic,    label: 'Voice' },
             ].map(({ id, icon: Icon, label }) => (
               <button
@@ -287,31 +249,6 @@ export default function MealLog() {
               </form>
             )}
 
-            {/* IMAGE mode */}
-            {mode === 'image' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div {...getRootProps()} style={{ ...s.dropzone, ...(isDragActive ? s.dropzoneActive : {}), ...(imagePreview ? { padding: 8 } : {}) }}>
-                  <input {...getInputProps()} />
-                  {imagePreview ? (
-                    <div style={{ position: 'relative' }}>
-                      <img src={imagePreview} alt="food" style={{ width: '100%', borderRadius: 12, maxHeight: 200, objectFit: 'cover' }} />
-                      <button style={s.removeImg} onClick={e => { e.stopPropagation(); setImageFile(null); setImagePreview(null) }}>
-                        <X size={14} />
-                      </button>
-                    </div>
-                  ) : (
-                    <div style={{ textAlign: 'center' }}>
-                      <Upload size={32} color="#86efac" />
-                      <p style={{ color: '#6b8f76', fontSize: '0.88rem', marginTop: 10 }}>
-                        {isDragActive ? 'Drop it here!' : 'Drag & drop or click to upload a food photo'}
-                      </p>
-                      <p style={{ color: '#9dbfaa', fontSize: '0.75rem', marginTop: 4 }}>AI will identify the food and estimate nutrition</p>
-                    </div>
-                  )}
-                </div>
-                <GlassButton icon={Zap} onClick={handleImageSubmit} disabled={!imageFile} fullWidth>Analyze Image</GlassButton>
-              </div>
-            )}
 
             {/* VOICE mode */}
             {mode === 'voice' && (
